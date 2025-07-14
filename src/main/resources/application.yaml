@@ -17,7 +17,18 @@ spring:
           style: vivid
           quality: standard
           response-format: url
+    vectorstore:
+      pgvector:
+        index-type: HNSW
+        distance-type: COSINE_DISTANCE
+        dimensions: 1536
+        max-document-batch-size: 10000
+        initialize-schema: true
     mcp:
       client:
         stdio:
           servers-configuration: classpath:mcp-servers.json
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: sup3rs3cr3tpw
