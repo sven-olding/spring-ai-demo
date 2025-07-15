@@ -1,5 +1,5 @@
-// @connection-timeout 2 m
-# @timeout 600
+// @connection-timeout 5 m
+# @timeout 1200
 POST http://localhost:8080/chat
 
  How can I create a new application?
