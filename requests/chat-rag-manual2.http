@@ -1,3 +1,5 @@
+// @connection-timeout 2 m
+# @timeout 600
 POST http://localhost:8080/chat
 
-Wie kann ich einen Favoriten speichern?
+ How can I create a new application?

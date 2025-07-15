@@ -32,7 +32,7 @@ public class ChatConfig {
         var qaAdvisor =
                 QuestionAnswerAdvisor.builder(vectorStore)
                         .searchRequest(
-                                SearchRequest.builder().similarityThreshold(0.8d).topK(10).build())
+                                SearchRequest.builder().similarityThreshold(0.6d).topK(20).build())
                         .build();
 
         var chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
