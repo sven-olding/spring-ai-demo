@@ -7,6 +7,7 @@ import org.springframework.ai.transformer.splitter.TokenTextSplitter;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,13 +16,17 @@ import java.util.List;
 public class RagService {
     private final VectorStore vectorStore;
     private final ResourceLoader resourceLoader;
+    private final JdbcTemplate jdbcTemplate;
 
-    public RagService(VectorStore vectorStore, ResourceLoader resourceLoader) {
+    public RagService(
+            VectorStore vectorStore, ResourceLoader resourceLoader, JdbcTemplate jdbcTemplate) {
         this.vectorStore = vectorStore;
         this.resourceLoader = resourceLoader;
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     public void loadData() {
+        jdbcTemplate.execute("DELETE FROM vector_store");
         Resource holgerManualPdf =
                 resourceLoader.getResource("classpath:Anwendungshandbuch_Holger.pdf");
         var documentReader = new TikaDocumentReader(holgerManualPdf);

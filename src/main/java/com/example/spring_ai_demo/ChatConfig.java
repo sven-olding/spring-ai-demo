@@ -6,7 +6,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.mcp.SyncMcpToolCallbackProvider;
+import org.springframework.ai.chat.prompt.ChatOptions;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,8 +40,9 @@ public class ChatConfig {
         return chatClientBuilder
                 .defaultAdvisors(List.of(chatMemoryAdvisor, qaAdvisor))
                 .defaultSystem(systemPrompt)
-                .defaultTools(new ChatTools())
-                .defaultToolCallbacks(new SyncMcpToolCallbackProvider(mcpSyncClients))
+                .defaultOptions(ChatOptions.builder().temperature(0.2).build())
+                // .defaultTools(new ChatTools())
+                // .defaultToolCallbacks(new SyncMcpToolCallbackProvider(mcpSyncClients))
                 .build();
     }
 }

@@ -3,25 +3,32 @@ spring:
     name: spring-ai-demo
   config:
     import: optional:file:.env[.properties]
+  jpa:
+    show-sql: true
   ai:
-    openai:
-      api-key: ${OPENAI_API_KEY}
+    ollama:
       chat:
-        options:
-          temperature: 0.7
-          deployment-name: gpt-4o
-      image:
-        options:
-          model: dall-e-3
-          size: 1024x1024
-          style: vivid
-          quality: standard
-          response-format: url
+        #model: llama3.2:3b
+        model: llama3:8b
+    #    openai:
+    #      api-key: ${OPENAI_API_KEY}
+    #      chat:
+    #        options:
+    #          temperature: 0.7
+    #          deployment-name: gpt-4o
+    #    model:
+    #      image:
+    #        options:
+    #          model: dall-e-3
+    #          size: 1024x1024
+    #          style: vivid
+    #          quality: standard
+    #          response-format: url
     vectorstore:
       pgvector:
         index-type: HNSW
         distance-type: COSINE_DISTANCE
-        dimensions: 1536
+        dimensions: 1024
         max-document-batch-size: 10000
         initialize-schema: true
     mcp:
@@ -32,3 +39,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: admin
     password: sup3rs3cr3tpw
+logging:
+  level:
+    org.springframework.ai: DEBUG
+    org.springframework.ai.chat: DEBUG
+    org.springframework.ai.chat.client: DEBUG
+    org.springframework.ai.chat.prompt: DEBUG
+    org.springframework.jdbc.core: DEBUG
+    org.hibernate.SQL: DEBUG
