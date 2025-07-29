@@ -1,5 +1,5 @@
-// @connection-timeout 2 m
-# @timeout 600
+// @connection-timeout 5 m
+# @timeout 1200
 POST http://localhost:8080/chat
 
-Hallo! Wo kann ich Anträge mit der P3-Nummer suchen?
+Wie kann ich die Spalten anpassen?

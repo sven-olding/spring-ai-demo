@@ -2,4 +2,5 @@
 # @timeout 1200
 POST http://localhost:8080/chat
 
- How can I create a new application?
+# Wie kann ich einen Antrag als PDF exportieren?
+Wie kann ich mir einen Antrag zuweisen?
