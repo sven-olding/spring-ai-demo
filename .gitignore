@@ -35,3 +35,6 @@ build/
 ### Env Files ###
 .env
 *.env
+
+### Confidential ###
+src/main/resources/Anwendungshandbuch_Holger.pdf
