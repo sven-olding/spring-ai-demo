@@ -7,10 +7,10 @@ spring:
     show-sql: true
   ai:
     ollama:
+      embedding:
+        model: bge-m3:567m
       chat:
-        #model: llama3.2:3b
-        #model: llama3:8b
-        model: deepseek-r1:8b
+        model: gemma3n:e4b
     #    openai:
     #      api-key: ${OPENAI_API_KEY}
     #      chat:
@@ -30,7 +30,7 @@ spring:
         index-type: HNSW
         distance-type: COSINE_DISTANCE
         dimensions: 1024
-        max-document-batch-size: 10000
+        max-document-batch-size: 100
         initialize-schema: true
     mcp:
       client:
